@@ -7,16 +7,17 @@ import Modules.blockfriend as blockfriend
 import Modules.leaveserver as leaveserver
 import Modules.floodchat as floodchat
 import Modules.sendmessage as sendmessage
+import Modules.deleteserver as deleteserver
 
-ctypes.windll.kernel32.SetConsoleTitleW("Goldiscord V1.7")
+ctypes.windll.kernel32.SetConsoleTitleW("Goldiscord V1.8")
 green = colorama.Fore.GREEN
 normal = colorama.Style.RESET_ALL
 colorama.init()
 
 token = input("Authorization Token: ")
 def main():
-    print("__==Goldiscord V1.7==__")
-    option = input("\n1) Server Spam\n2) Block Friend\n3) Leave Server\n4) Flood Chat\n5) Send Message\n>")
+    print("__==Goldiscord V1.8==__")
+    option = input("\n1) Server Spam\n2) Block Friend\n3) Leave Server\n4) Flood Chat\n5) Send Message\n6) Delete Server\n>")
 
     if option == "1":
         print("Loaded module:"+green,"Server Spam"+normal)
@@ -58,5 +59,13 @@ def main():
         sendmessage.send_message(token, channel_id, message)
         os.system("cls")
         print("Successfully executed module: " + green + "Send Message"+normal)
+        main()
+
+    if option == "6":
+        print("Loaded module:"+green,"Delete Server"+normal)
+        server_id = input("Server ID: ")
+        deleteserver.delete_server(token, server_id)
+        os.system("cls")
+        print("Successfully executed module: " + green + "Delete Server"+normal)
         main()
 main()
